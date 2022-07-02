@@ -3,6 +3,9 @@ addToShoppingCartButttons.forEach(addToCartButton => {
     addToCartButton.addEventListener('click', addToCartClicked);
 });
 
+const comprarButton = document.querySelector('.comprarButton');
+comprarButton.addEventListener('click', comprarButtonClicked)
+
 const shoppingCartItemsContainer = document.querySelector('.shoppingCartItemsContainer');
 
 function addToCartClicked(event) {
@@ -27,7 +30,7 @@ function addItemToShoppingCart(itemTitle, itemPrice, itemImage) {
             let elementQuantity = elementsTitle[i].parentElement.parentElement.parentElement.querySelector('.shoppingCartItemQuantity');
 
             elementQuantity.value++
-        updateShoppingCartTotal()
+            updateShoppingCartTotal()
 
             return
 
@@ -98,4 +101,9 @@ function quantityChanged(event) {
     const input = event.target;
     input.value <= 1 ? input.value = 1 : null
     updateShoppingCartTotal()
+}
+
+function comprarButtonClicked() {
+    shoppingCartItemsContainer.innerHTML = '';
+    updateShoppingCartTotal(0)
 }
