@@ -19,6 +19,21 @@ function addToCartClicked(event) {
 }
 
 function addItemToShoppingCart(itemTitle, itemPrice, itemImage) {
+
+    const elementsTitle = shoppingCartItemsContainer.getElementsByClassName('shoppingCartItemTitle');
+
+    for (let i = 0; i < elementsTitle.length; i++) {
+        if (elementsTitle[i].innerText === itemTitle) {
+            let elementQuantity = elementsTitle[i].parentElement.parentElement.parentElement.querySelector('.shoppingCartItemQuantity');
+
+            elementQuantity.value++
+        updateShoppingCartTotal()
+
+            return
+
+        }
+    }
+
     const shoppingCartRow = document.createElement('div');
     const shoppingCartContent = `
     <div class="row shoppingCartItem">
