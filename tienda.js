@@ -82,4 +82,5 @@ function removeShoppinCartItem(event) {
 function quantityChanged(event) {
     const input = event.target;
     input.value <= 1 ? input.value = 1 : null
+    updateShoppingCartTotal()
 }
