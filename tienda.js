@@ -44,9 +44,10 @@ function addItemToShoppingCart(itemTitle, itemPrice, itemImage) {
     shoppingCartItemsContainer.append(shoppingCartRow)
 
     shoppingCartRow.querySelector('.buttonDelete').addEventListener('click', removeShoppinCartItem)
+    shoppingCartRow.querySelector('.shoppingCartItemQuantity').addEventListener('change', quantityChanged)
+
 
     updateShoppingCartTotal()
-
 }
 
 function updateShoppingCartTotal() {
@@ -69,9 +70,16 @@ function updateShoppingCartTotal() {
     });
     shoppingCartTotal.innerHTML = `${total.toFixed(2)}$`
 };
+
+
 function removeShoppinCartItem(event) {
     const buttonClicked = event.target
     buttonClicked.closest('.shoppingCartItem').remove();
 
     updateShoppingCartTotal()
+}
+
+function quantityChanged(event) {
+    const input = event.target;
+    input.value <= 1 ? input.value = 1 : null
 }
